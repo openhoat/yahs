@@ -1,0 +1,41 @@
+.box-sizing(@value:border-box) {
+  box-sizing: @value;
+  -o-box-sizing: @value;
+  -moz-box-sizing: @value;
+  -webkit-box-sizing: @value;
+}
+
+.border-radius(@value: 10px) {
+  border-radius: @value;
+  -o-border-radius: @value;
+  -moz-border-radius: @value;
+  -webkit-border-radius: @value;
+}
+
+.transitionTransform(@duration: .3s, @mode: ease-out) {
+  transition: transform @duration @mode;
+  -o-transition: -o-transform @duration @mode;
+  -moz-transition: -moz-transform @duration @mode;
+  -webkit-transition: -webkit-transform @duration @mode;
+}
+
+.transitionOpacity(@duration: 0.5s, @mode: ease-in-out, @duration2: 0.2s) {
+  transition: opacity @duration @mode @duration2;
+  -o-transition: opacity @duration @mode @duration2;
+  -moz-transition: opacity @duration @mode @duration2;
+  -webkit-transition: opacity @duration @mode @duration2;
+}
+
+.translate(@value:0) {
+  transform: translate(@value);
+  -o-transform: translate(@value);
+  -moz-transform: translate(@value);
+  -webkit-transform: translate3d(@value, 0, 0);
+}
+
+.tapHighlightColor(@value:transparent) {
+  tap-highlight-color: @value;
+  -o-tap-highlight-color: @value;
+  -moz-tap-highlight-color: @value;
+  -webkit-tap-highlight-color: @value;
+}

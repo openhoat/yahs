@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Yet Another Html5 Slideshow</title>
+  <meta name="viewport" content="width=1100,height=750">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="shortcut icon" href="images/favicon.ico"/>
+  <link rel="stylesheet/less" type="text/css" href="../../src/styles/yahs.less"/>
+  <link rel="stylesheet/less" type="text/css" media="screen" href="styles/valtech.less"/>
+  <script src="../../lib/less.js"></script>
+  <script src="../../lib/prettify.js"></script>
+  <script src="../../lib/jquery.js"></script>
+  <script src="../../src/js/yahs-engine.js"></script>
+</head>
+<body class="template-valtech">
+<section class="slides layout-regular template-valtech">
+
+<article class="first" id="slide1">
+  <h1>Node.js, le pavé dans la mare</h1>
+
+  <h2>DekNOD</h2>
+
+  <h3>v1.0.0</h3>
+
+  <div class="slidenumber">1</div>
+</article>
+
+<article id="slide2">
+  <h3>
+    Un exemple, vite !
+  </h3>
+
+  <h1 style="margin: 40px auto; text-align: center; font-size: 1.4em;"><a href="http://tweetping.net/" target="_blank">http://tweetping.net/</a>
+  </h1>
+  <img class="center" style="margin-top: 30px; width: 740px;" src="images/tweetping.png"/>
+
+  <div class="slidenumber">2</div>
+</article>
+
+<article class="chapter" id="slide3">
+  <h2><span class="number">1.</span> Présentation de Node</h2>
+
+  <div class="slidenumber">3</div>
+</article>
+
+<article id="slide4">
+  <h3>
+    Qu'est-ce que Node
+  </h3>
+  <ul>
+    <li>Projet créé en 2009 par Ryan Dahl (Joyent Inc.)</li>
+    <li>Basé sur le langage JavaScript</li>
+    <li>Sur-couche de Chrome V8</li>
+    <li>Positionné côté serveur</li>
+    <li>Piloté par les événements</li>
+  </ul>
+  <img class="right" src="images/logo_nodejs.png"/>
+
+  <div class="slidenumber">4</div>
+</article>
+
+<article id="slide5">
+  <h3>
+    Node et GitHub
+  </h3>
+  <img class="center" style="width: 800px; height: 550px;" src="images/github_screenshot.png"/>
+
+  <div class="build">
+    <div>
+      <img style="position: absolute; top: 310px; left: 0px; width: 70px; height: auto;"
+           src="images/silver_medal.jpg"/>
+    </div>
+    <div>
+      <img style="position: absolute; top: 60px; right: 120px; width: auto; height: auto;" src="images/js_rocks.png"/>
+      <img src="images/fleche_bas.png"
+           style="position: absolute; top: 150px; right: 180px; width: auto; height: auto;"/>
+    </div>
+  </div>
+  <div class="slidenumber">5</div>
+</article>
+
+<article id="slide6">
+  <h3>
+    Ceux qui l'utilisent
+  </h3>
+
+  <div class="build">
+    <div>
+      <img style="position: absolute; top: 170px; left: 80px; width: 350px; height: auto;"
+           src="images/logo_linkedin.png"/>
+    </div>
+    <div>
+      <img src="images/fleche_bas.png" style="position: absolute; top: 250px; left: 240px; width: auto; height: auto;"/>
+      <img style="position: absolute; top: 310px; left: 50px; width: 400px; height: auto;"
+           src="images/linkedin_arch.png"/>
+    </div>
+    <div>
+      <img style="position: absolute; top: 120px; right: 170px; width: 150px; height: auto;"
+           src="images/logo_ebay.png"/>
+      <img style="position: absolute; top: 150px; right: 80px; width: 250px; height: 80px;"
+           src="images/logo_qlio.png"/>
+    </div>
+    <div>
+      <img src="images/fleche_bas.png"
+           style="position: absolute; top: 250px; right: 180px; width: auto; height: auto;"/>
+      <img style="position: absolute; top: 310px; right: 10px; width: 350px; height: 330px;"
+           src="images/qlio_arch.png"/>
+    </div>
+  </div>
+  <div class="slidenumber">6</div>
+</article>
+
+<article id="slide7">
+  <h3>
+    Objectifs de Node
+  </h3>
+  <ul>
+    <li>Fournir une pile logicielle permettant&nbsp;:
+      <ul>
+        <li> Aux développeurs web&nbsp;: JavaScript / navigateur
+        </li>
+        <li> De développer des serveurs
+        </li>
+      </ul>
+    </li>
+    <li> Faciliter les fonctionnalités de push</li>
+    <li>Proposer une API d'I/O suffisament bas niveau
+    </li>
+    <li>Privilégier les appels non bloquants
+    </li>
+  </ul>
+  <div class="slidenumber">7</div>
+</article>
+
+<article id="slide8">
+  <h3>
+    Chrome V8
+  </h3>
+  <ul>
+    <li>Moteur JavaScript open source
+      <ul>
+        <li>Utilisé dans les navigateurs (Google Chrome)</li>
+        <li>Ou en standalone (Node)</li>
+      </ul>
+    </li>
+    <li>Compile le JavaScript en code natif</li>
+    <li>Optimise à la volée&nbsp;:
+      <ul>
+        <li>Inlining</li>
+        <li>Cache</li>
+      </ul>
+    </li>
+    <li>Garbage collector</li>
+  </ul>
+  <img style="position: absolute; top: 250px; right: 150px; width: auto; height: auto;" src="images/logo_v8.png"/>
+
+  <div class="slidenumber">8</div>
+</article>
+
+<article id="slide9">
+  <h3>
+    Architecture
+  </h3>
+  <img class="center" style="margin-top: 50px;" src="images/nodejs_architecture.jpg"/>
+
+  <div class="slidenumber">9</div>
+</article>
+
+<article id="slide10">
+  <h3>
+    Chaîne de traitement
+  </h3>
+  <img class="center" style="margin-top: 20px; width: 800px;" src="images/NodeJS-EventedIOAsyncIO.png"/>
+
+  <div class="slidenumber">10</div>
+</article>
+
+<article class="chapter" id="slide11">
+  <h2><span class="number">2.</span> Fonctionnalités</h2>
+
+  <div class="slidenumber">11</div>
+</article>
+
+<article id="slide12">
+  <h3>
+    Gestionnaire de packages NPM
+  </h3>
+  <ul>
+    <li>NPM&nbsp;: Node Packages Modules</li>
+    <li>Gère les dépendances d'une application Node
+      <ul>
+        <li>Déclarées dans package.json</li>
+        <li>Dépôt local dans node_modules/ (cf. NODE_PATH)</li>
+      </ul>
+    </li>
+    <li>Un peu comme Maven...
+      <ul>
+        <li>npm install&nbsp;: télécharge les dépendances</li>
+        <li>npm publish&nbsp;: publie un module dans le dépôt central</li>
+      </ul>
+    </li>
+    <li>Scopes&nbsp;: local au projet, ou global</li>
+  </ul>
+  <img class="center" style="margin-top: 40px; width: 150px;" src="images/npm.png"/>
+
+  <div class="slidenumber">12</div>
+</article>
+
+<article id="slide13">
+  <h3>
+    Modèle asynchrone vs multi-thread
+  </h3>
+  <img class="center" style="margin-top: 80px; width: 760px;" src="images/nginx-apache-reqs-sec.png"/>
+
+  <div class="build">
+    <img style="position: absolute; top: 300px; left: 320px; width: 250px; height: auto;" src="images/io-cost.png"/>
+  </div>
+  <div class="slidenumber">13</div>
+</article>
+
+<article class="smaller" id="slide14">
+  <h3>
+    Modèle asynchrone - impacts dans le code
+  </h3>
+  <section class="left" style="width: 340px;">
+      <pre>
+
+// Synchrone
+
+function loadData(id) {
+  var data = store.find(id);
+  return data;
+}
+var result = loadData(3);
+console.log('result :', result);
+console.log('continue...');
+
+      </pre>
+  </section>
+  <div class="build">
+    <div>
+      <img src="images/fleche_droite.png" style="position: absolute; top: 250px; left: 430px;"/>
+      <section class="right" style="width: 340px;">
+      <pre>
+// Asynchrone
+
+function loadData(id, callback) {
+  store.find(id, function(data) {
+    callback(data);
+  });
+}
+loadData(3, function(result) {
+  console.log('result :', result);
+});
+console.log('continue...');
+      </pre>
+      </section>
+    </div>
+  </div>
+  <div class="slidenumber">14</div>
+</article>
+
+<article class="smaller" id="slide15">
+  <h3>
+    Synchrone – moins gentil
+  </h3>
+  <section>
+      <pre>
+function manageRequest(request) {
+  var product, model, view, content;
+  product = store.find(id);
+  if (product === null) {
+    content = renderer.render('notFound.html');
+    return content;
+  }
+  model = { id:product._id, name:product.name, price:product.price };
+  view = 'productDetail.html';
+  content = renderer.render(view, model);
+  if (content === null) {
+    return renderer.render('internalError.html');
+  }
+  return content;
+}
+response.write(manageRequest(request));
+      </pre>
+  </section>
+  <div class="slidenumber">15</div>
+</article>
+
+<article class="smaller" id="slide16">
+  <h3>
+    Asynchrone – moins gentil
+  </h3>
+  <section>
+      <pre>
+function manageRequest(request, callback) {
+  var product, model, view, content;
+  store.find(id, function (product, err) {
+    if (err) {
+      content = renderer.render('notFound.html', function (content) {
+        callback(content);
+      });
+      return;
+    }
+    model = { id:product._id, name:product.name, price:product.price };
+    view = 'productDetail.html';
+    content = renderer.render(view, model, function (content, err) {
+      if (err) {
+        renderer.render('internalError.html', function (content) {
+          callback(content);
+        });
+        return;
+      }
+      callback(content);
+    });
+  });
+}
+manageRequest(request, function (content) { response.write(content); });
+      </pre>
+  </section>
+  <div class="slidenumber">16</div>
+</article>
+
+<article class="smaller" id="slide17">
+  <q style="padding-top: 54px;">
+    Because nothing blocks, less-than-expert programmers
+    are able to develop fast systems
+  </q>
+
+  <div class="author">
+    nodejs.org/about
+  </div>
+  <div class="slidenumber">17</div>
+</article>
+
+<article class="chapter" id="slide18">
+  <h2><span class="number">3.</span> Modules standards</h2>
+
+  <div class="slidenumber">18</div>
+</article>
+
+<article id="slide19">
+  <h3>
+    Net, Http
+  </h3>
+  <ul>
+    <li>Net permet d'agir au niveau socket
+      <ul>
+        <li>En tant que serveur ou client</li>
+        <li>Avec des méthodes de base</li>
+        <li>Et des événements à écouter&nbsp;: connect, data, end, close</li>
+      </ul>
+    </li>
+    <li>Http&nbsp;: idem mais au niveau web
+      <ul>
+        <li>S'appuie sur Net et l'interface générique EventEmitter</li>
+        <li>Supporte SSL</li>
+      </ul>
+    </li>
+  </ul>
+  <div class="slidenumber">19</div>
+</article>
+
+<article id="slide20">
+  <h3>
+    Os, Process, Child process
+  </h3>
+  <ul>
+    <li>Os&nbsp;: informations relatives au système d'exploitation
+      <ul>
+        <li>Type, plateforme, mémoire, cpus, interfaces réseaux</li>
+        <li>Pas l'habitude d'avoir accès à ces infos ☺</li>
+      </ul>
+    </li>
+    <li>Process&nbsp;: informations du processus
+      <ul>
+        <li>Arguments, environnement, propriétaire, entrées sorties standards</li>
+      </ul>
+    </li>
+    <li>Child process&nbsp;: gestion de processus
+      <ul>
+        <li>Exec, fork, spawn</li>
+      </ul>
+    </li>
+  </ul>
+  <div class="slidenumber">20</div>
+</article>
+
+<article id="slide21">
+  <h3>
+    Path , File System
+  </h3>
+  <ul>
+    <li>Path&nbsp;: outils pour travailler sur les chemins de fichiers
+      <pre>var monfic = 'mondir/sousdir/name.ext'</pre>
+      <pre>var monfic = path.join('mondir', 'sousdir', 'name.ext')</pre>
+    </li>
+    <li>File System&nbsp;:
+      <ul>
+        <li>Opérations sur les fichiers&nbsp;:
+          <ul>
+            <li>Lecture répertoire, suppression, écriture, information, liens symboliques</li>
+          </ul>
+        </li>
+        <li>APIs synchrones ou asynchrones</li>
+      </ul>
+    </li>
+  </ul>
+  <div style="position: absolute; color: red; top: 226px; left: 50px; font-size: 30px;">☹</div>
+  <div style="position: absolute; color: blue; top: 298px; left: 45px; font-size: 44px;">☺</div>
+  <div class="slidenumber">21</div>
+</article>
+
+<article id="slide22">
+  <h3>
+    Modules
+  </h3>
+  <ul>
+    <li>Node fournit quelques variables globales
+      <ul>
+        <li>module, process, mais pas window</li>
+      </ul>
+    </li>
+    <li>Et un mécanisme pour rendre les choses modulaires
+      <ul>
+        <li>Inspiration pythonesque ☺</li>
+      </ul>
+    </li>
+  </ul>
+  <section class="left" style="width: 240px;">
+    <pre>
+// lib/mymodule.js
+module.exports = {
+  foo: function(){
+    return 'bar';
+  }
+};
+    </pre>
+  </section>
+  <section class="right" style="width: 480px;">
+    <pre>
+// app.js
+var myModule = require('./lib/mymodule');
+myModule.foo();
+    </pre>
+  </section>
+  <div class="slidenumber">22</div>
+</article>
+
+<article class="chapter" id="slide23">
+  <h2><span class="number">4.</span> Modules tiers</h2>
+
+  <div class="slidenumber">23</div>
+</article>
+
+<article id="slide24">
+  <h3>
+    Les incontournables – module async
+  </h3>
+  <ul>
+    <li>forEach, filter, map, log</li>
+    <li>nombreux helpers pour la gestion asynchrone</li>
+  </ul>
+  <section>
+    <pre>
+var async = require('async');
+async.forEach(['a', 'b', 'c'], function (item, callback) {
+  if (item === 'b') {
+    callback(new Error('b forbidden'));
+  } else {
+    console.log(item);
+    callback();
+  }
+}, function (err) {
+  if (err) { console.log('Error :', err);
+  } else { console.log('done'); }
+});</pre>
+  </section>
+  <div class="build">
+    <section style="position: absolute; top: 310px; right: 10px;">
+      <style>
+        .pun {
+          color: black !important;
+        }
+      </style>
+      <pre style="background-color: #ccc;">
+Résultat&nbsp;:
+a
+Error : [Error: b forbidden]
+c
+
+Résultat&nbsp;avec forEachSeries :
+a
+Error : [Error: b forbidden]
+      </pre>
+    </section>
+  </div>
+  <div class="slidenumber">24</div>
+</article>
+
+<article id="slide25">
+  <h3>
+    Asynchrone multi steps – à la main
+  </h3>
+  <section class="center" style="width: 400px; margin-top: 100px;">
+    <pre>
+step1(params, function (result) {
+  step2(result, function () {
+    step3(result, function () {
+      step4(result, function () {
+        fini();
+      });
+    });
+  });
+});</pre>
+  </section>
+  <div class="slidenumber">25</div>
+</article>
+
+<article id="slide26">
+  <h3>
+    Asynchrone multi steps – pattern / module Step
+  </h3>
+  <section style="position: absolute; left: 40px;">
+    <pre>
+step1(params, function (result) {
+  var n = 0;
+  var next = function () {
+    n++;
+    if (n === 3) {
+      fini();
+    }
+  };
+  step2(result, next);
+  step3(result, next);
+  step4(result, next);
+});
+    </pre>
+  </section>
+  <div class="build">
+    <section style="position: absolute; right: 40px;">
+      <pre>
+Step(
+  function () {
+    step1(params, this);
+  },
+  function (result) {
+    step2(result, this.parallel());
+    step3(result, this.parallel());
+    step4(result, this.parallel());
+  },
+  function () {
+    fini();
+  }
+);
+      </pre>
+    </section>
+  </div>
+  <div class="slidenumber">26</div>
+</article>
+
+<article id="slide27">
+  <h3>
+    Les incontournables – module commander
+  </h3>
+  <ul>
+    <li>Pour exposer des commandes</li>
+    <li>Plus pratique qu'une gestion avec process.argv</li>
+  </ul>
+  <section>
+    <pre>
+commander
+  .version(version)
+  .option('-f, --force', 'force on non-empty directory')
+  .option('-r, --refresh', 'refresh files')
+  ...
+  .parse(process.argv);
+
+appPath = commander.args.shift() || process.cwd();
+
+if (commander.force) {
+  force();
+  ...
+}</pre>
+  </section>
+  <div class="slidenumber">27</div>
+</article>
+
+<article id="slide28">
+  <h3>
+    Les incontournables – module Express
+  </h3>
+  <ul>
+    <li>Framework pour application web Node&nbsp;:
+      <ul>
+        <li>Minimaliste et flexible</li>
+      </ul>
+    </li>
+    <li>Basé sur le middleware connect</li>
+    <li>Définition de routes sophistiquées</li>
+    <li>Injection de moteur de rendu&nbsp;: jade, ejs, consolidate</li>
+  </ul>
+  <section>
+    <pre>
+var express = require('express');
+var app = express();
+app.get('/hello.txt', function(req, res){
+  res.send('Hello World');
+});
+app.listen(3000);</pre>
+  </section>
+  <div class="slidenumber">28</div>
+</article>
+
+<article id="slide29">
+  <h3>
+    Les incontournables – module i18n
+  </h3>
+  <ul style="font-size: 0.8em; margin-top: 10px;">
+    <li>Module de traduction léger, stockage en json</li>
+    <li>Facilité d'intégration avec Express</li>
+  </ul>
+  <section style="position: absolute; bottom: 10px; width: 400px;">
+    <pre>
+var express = require('express')
+  , i18n = require('i18n');
+i18n.configure({
+  locales:['en', 'fr'],
+  register: global
+});
+app.locals({
+  __: i18n.__,
+  __n: i18n.__n
+});
+app.configure(function() {
+  app.use(i18n.init);
+  ...
+});
+var welcome = __('Welcome');</pre>
+  </section>
+  <section class="right" style="width: 350px;">
+    <pre>
+&lt;body&gt;
+&lt;h1&gt;&lt;%= __('Welcome') %&gt;&lt;/h1&gt;
+&lt;/body&gt;</pre>
+  </section>
+  <div class="slidenumber">29</div>
+</article>
+<article id="slide30">
+  <h3>
+    Les incontournables – module mongoose
+  </h3>
+  <ul>
+    <li>API mongodb pour Node :
+      <ul>
+        <li>Adaptée au côté asynchrone de Node</li>
+        <li>Convient à de nombreuses situations&nbsp;: local, distant, cloud</li>
+      </ul>
+    </li>
+  </ul>
+  <section style="position: absolute; top: 260px; left: 20px;">
+    <pre style="font-size: 0.6em;">
+var mongoose = require('mongoose')
+  , db = require('./db');
+var contactDao = {
+  entityName:'contact',
+  schema:mongoose.Schema({
+    firstName:{ type:String }, lastName:{ type:String }, phoneNumber:{ type:String }
+  }),
+  getModel:function () {
+    return db.connection.model(contactDao.entityName, contactDao.schema)
+  }
+};</pre>
+  </section>
+  <div class="slidenumber">30</div>
+</article>
+
+<article id="slide31">
+  <h3>
+    Simple db helper
+  </h3>
+  <section>
+    <pre style="font-size: 0.6em;">
+var mongoose = require('mongoose')
+  , db = { connection:null,
+    connect:function () {
+      db.connection = mongoose.connect('mongodb://localhost:27017/db');
+    }, close:function () {
+      if (db.connection !== null) {
+        mongoose.disconnect();
+        db.connection = null;
+        return true;
+      } else return false;
+    }
+  };
+db.connect();
+process.on('exit', function (code) {
+  var result = db.close();
+  console.log('disconnecting db : ', result);
+});</pre>
+  </section>
+  <div class="slidenumber">31</div>
+</article>
+<article id="slide32">
+  <h3>
+    Les incontournables – module socket.io
+  </h3>
+  <ul style="font-size: 0.8em; margin-top: 10px;">
+    <li>Pour jouer avec les web sockets</li>
+    <li>Modes dégradés pour les navigateurs
+      <ul>
+        <li>Ajax, Adobe Flash Socket, iframe</li>
+      </ul>
+    </li>
+    <li>Facilité d'intégration avec Express</li>
+  </ul>
+  <section style="position: absolute; top: 280px; left: 20px; width: 360px;">
+    <pre style="font-size: 0.6em;">
+var io = require('socket.io')
+  .listen(80);
+io.sockets.on('connection',
+  function (socket) {
+    socket.emit('news', {
+      hello: 'world'
+    });
+    socket.on('my other event',
+      function (data) {
+        console.log(data);
+      });
+});// Serveur</pre>
+  </section>
+  <section class="right" style="position: absolute; top: 280px; right: 20px; width: 480px;">
+    <pre style="font-size: 0.6em;">
+&lt;script src="/socket.io/socket.io.js"&gt;
+&lt;/script&gt;
+&lt;script&gt;
+  var socket = io.connect('http://localhost');
+  socket.on('news', function (data) {
+    console.log(data);
+    socket.emit('my other event', {
+      my: 'data'
+    });
+  });
+&lt;/script&gt;&lt;!-- Client --&gt;</pre>
+  </section>
+  <div class="slidenumber">32</div>
+</article>
+
+<article class="chapter" id="slide33">
+  <h2><span class="number">5.</span> Développement JavaScript</h2>
+
+  <div class="slidenumber">33</div>
+</article>
+<article id="slide34">
+  <h3>
+    IDE et debug
+  </h3>
+  <ul>
+    <li>La qualité de l'offre des IDEs est limitée
+      <ul>
+        <li>Langage&nbsp;non typé, trop dynamique</li>
+        <li>Eclipse&nbsp;: top avec Java, bof avec JS</li>
+      </ul>
+    </li>
+    <li>Faire sans&nbsp;:
+      <ul>
+        <li>On se contente d'un éditeur (vi, textmate, ...), parfois amélioré</li>
+      </ul>
+    </li>
+    <li>Faire avec :
+      <ul>
+        <li>Le choix du moment&nbsp;: WebStorm (Jetbrains)</li>
+      </ul>
+    </li>
+    <li>Mode Debug&nbsp;(si vraiment nécessaire ☺)&nbsp;:
+      <ul>
+        <li>En ligne de commande (à-la-gdb)</li>
+        <li>Dans WebStorm&nbsp;: plus confortable</li>
+      </ul>
+    </li>
+  </ul>
+  <div class="slidenumber">34</div>
+</article>
+<article id="slide35">
+  <h3>
+    Monter en compétence sur JavaScript
+  </h3>
+  <ul>
+    <li>Résister aux tentations</li>
+    <li>Se concentrer sur le meilleur</li>
+    <li>Et sur le résultat obtenu</li>
+    <li><a href="../../koans/" target="_blank">JavaScript Koans</a>&nbsp;:
+      <ul>
+        <li>Inspiré de Ruby</li>
+      </ul>
+    </li>
+  </ul>
+  <div class="slidenumber">35</div>
+</article>
+
+<article class="chapter" id="slide36">
+  <h2><span class="number">6.</span> Usine Logicielle</h2>
+
+  <div class="slidenumber">36</div>
+</article>
+<article id="slide37">
+  <h3>
+    Les composantes essentielles d'une Usine
+  </h3>
+  <ul>
+    <li>Qualité du code&nbsp;: jslint, jshint</li>
+    <li>Tests unitaires&nbsp;: mocha, qunit, jstd, jasmine, maven</li>
+    <li>Couverture du code&nbsp;: jscoverage, coverjs</li>
+    <li>Minifiers et autres compilateurs&nbsp;: less, coffee script, ...</li>
+    <li>Outil de build&nbsp;: grunt</li>
+    <li>Solutions efficaces pour chaque besoin
+      <ul>
+        <li>Pas toujours pour l'ensemble...</li>
+      </ul>
+    </li>
+  </ul>
+  <div class="slidenumber">37</div>
+</article>
+<article id="slide38">
+  <h3>
+    Déploiement &amp; clouds
+  </h3>
+  <ul>
+    <li>Déployer une application Node&nbsp;:
+      <ul>
+        <li>En standalone</li>
+        <li>Derrière un front</li>
+        <li>Pourquoi pas un front Node...</li>
+      </ul>
+    </li>
+    <li>Cloud&nbsp;:
+      <ul>
+        <li>Heroku, Nojitsu, AppFog, ...</li>
+      </ul>
+    </li>
+  </ul>
+  <img style="position: absolute; bottom: 80px; right: 30px; width: 430px;" src="images/appfog.png"/>
+
+  <div class="slidenumber">38</div>
+</article>
+<article class="chapter" id="slide39">
+  <h2><span class="number">7.</span> Code Kata</h2>
+
+  <h1 style="position: absolute; top: 120px; left: 240px;">
+    Web Live Chat
+  </h1>
+
+  <div class="slidenumber">39</div>
+</article>
+
+<article class="chapter" id="slide40">
+  <h2><span class="number">8.</span> Exemples et retours d'expérience</h2>
+
+  <div class="slidenumber">40</div>
+</article>
+<article id="slide41">
+  <h3>
+    Node en synthèse
+  </h3>
+  <ul>
+    <li>Node réinvente les roues des frameworks web</li>
+    <li>Un environnement auto-suffisant et très typé</li>
+    <li>Le JavaScript en réponse à tous les besoins</li>
+  </ul>
+  <div class="slidenumber">41</div>
+</article>
+<article id="slide42">
+  <h3>
+    Node en synthèse (suite)
+  </h3>
+  <ul>
+    <li>Node impose un modèle&nbsp;non bloquant / mono thread :
+      <ul>
+        <li>Adapté aux applications réseaux légères et rapides</li>
+      </ul>
+    </li>
+    <li>Solution de choix pour une application web&nbsp;:
+      <ul>
+        <li>Dont la compléxité est surtout côté client</li>
+      </ul>
+    </li>
+    <li>Un éco-système très prolifique</li>
+    <li>Mais jeune...</li>
+  </ul>
+  <div class="slidenumber">42</div>
+</article>
+<article id="slide43">
+  <h3>
+    Pas convaincu ?
+  </h3>
+  <a href="why.html" target="_blank">
+    <img class="center" style="margin-top: 50px;" src="images/nodejs-infographic1.jpg"/>
+  </a>
+
+  <div class="slidenumber">43</div>
+</article>
+<article class="chapter" id="slide44">
+  <h2><span class="number">9.</span> Questions / Réponses</h2>
+
+  <div class="slidenumber">44</div>
+</article>
+<article id="slide45">
+  <h3>
+    Notre offre JavaScript
+  </h3>
+  <ul>
+    <li>Développement client avec JavaScript et Ajax
+      <ul>
+        <li><a href="http://www.valtech-training.fr/formation/developpement-web/javascript-ajax/" target="_blank">réf.
+          JASI – 3 jours</a></li>
+      </ul>
+    </li>
+    <li>Développement JavaScript avancé
+      <ul>
+        <li><a href="http://www.valtech-training.fr/formation/developpement-web/javascript-avance/" target="_blank">réf.
+          JAJA – 2 jours</a></li>
+      </ul>
+    </li>
+    <li>Développer une application Web Full JavaScript
+      <ul>
+        <li><a href="http://www.valtech-training.fr/formation/developpement-web/javascript/" target="_blank">réf. STAX –
+          4 jours</a></li>
+      </ul>
+    </li>
+    <li>Programmer avec jQuery
+      <ul>
+        <li><a href="http://www.valtech-training.fr/formation/developpement-web/ajax-jquery/" target="_blank">réf. RESI
+          – 2 jours</a></li>
+      </ul>
+    </li>
+  </ul>
+  <div class="slidenumber">45</div>
+</article>
+</section>
+
+</body>
+</html>

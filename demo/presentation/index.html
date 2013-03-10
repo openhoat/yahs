@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Yet Another Html5 Slideshow</title>
+  <meta name="viewport" content="width=1100,height=750">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="shortcut icon" href="images/favicon.ico"/>
+  <link rel="stylesheet/less" type="text/css" href="../../src/styles/yahs.less"/>
+  <link rel="stylesheet/less" type="text/css" media="screen" href="styles/default.less"/>
+  <script src="../../lib/less.js"></script>
+  <script src="../../lib/prettify.js"></script>
+  <script src="../../lib/jquery.js"></script>
+  <script src="../../src/js/yahs-engine.js"></script>
+</head>
+<body>
+<section class="slides">
+  <article>
+    <h1>YAHS</h1>
+
+    <h2>Yet Another HTML5 Slideshow</h2>
+  </article>
+  <article>
+    <h3>Features</h3>
+
+    <p>Why another HTML5 slideshow ?</p>
+
+    <p>Because this one is :</p>
+    <ul>
+      <li>Really easy to code with simple tags</li>
+      <li>Really easy to customize with specific styles</li>
+      <li>Browsable on tablets and phones</li>
+      <li>Printable in landscape and portrait orientation</li>
+      <li>Distribuable as a single HTML page</li>
+    </ul>
+  </article>
+  <article>
+    <h3>Slide number</h3>
+
+    <p>Simply add a div with 'slidenumber' class to display the slide number in footer</p>
+
+    <div class="slidenumber"></div>
+  </article>
+  <article>
+    <h3>Simple image</h3>
+
+    <div class="imgContainer">
+      <img src="images/HTML5_Logo_512.png">
+    </div>
+    <div class="slidenumner"></div>
+  </article>
+  <article>
+    <h3>Syntax highlighting</h3>
+    <pre>
+step1(params, function (result) {
+  var n = 0
+    , next = function () {
+    n++;
+    if (n === 3) {
+      done();
+    }
+  };
+  step2(result, next);
+  step3(result, next);
+  step4(result, next);
+});
+    </pre>
+  </article>
+  <article>
+    <h3>Css example</h3>
+    <pre class="lang-css">
+
+body {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  color: purple;
+  background-color: #d8da3d;
+}
+h1 {
+  font-family: Helvetica, Geneva, Arial, SunSans-Regular, sans-serif;
+}
+    </pre>
+  </article>
+  <article>
+    <h3>'build' class</h3>
+
+    <p>Press 'next'</p>
+
+    <ul class="build">
+      <li>Add 'build' class to a div or ul tag</li>
+      <li>To make steps in your slide</li>
+    </ul>
+  </article>
+  <article class="smaller">
+    <h3>Usage</h3>
+    <ul>
+      <li>Pre-requisite :
+        <ul>
+          <li>Install <a href="http://nodejs.org/" target="_blank">node.js</a></li>
+          <li>Install <a href="http://gruntjs.com/" target="_blank">grunt</a></li>
+          <li>
+            Install dependencies with <a href="https://npmjs.org/" target="_blank">npm</a> :
+            <pre class="lang-bsh">
+> cd /workdir/yahs
+> npm install</pre>
+          </li>
+        </ul>
+      </li>
+      <li>Test your local slideshow in dev mode :
+        <ul>
+          <li>Disable your browser security : because of local access (url file://)</li>
+          <li>Open the local page in your browser</li>
+        </ul>
+      </li>
+      <li>Build the dist page with grunt :
+            <pre class="lang-bsh">
+> grunt</pre>
+      </li>
+      <li>Browse the all-in-one dist page</li>
+    </ul>
+  </article>
+  <article>
+    <h3>Slide templates</h3>
+    <ul>
+      <li>Check the samples (under /demo/) :
+        <ul>
+          <li>presentation : this slides (basic template)</li>
+          <li>nodejs-presentation : real presentation made for a french seminar the 02/28/2013</li>
+        </ul>
+      </li>
+      <li>Start with the basic template</li>
+      <li>Hack it!</li>
+    </ul>
+  </article>
+  <article>
+    <h3>Advices</h3>
+
+    <p>
+      When grunt build is done, images, custom fonts, and scripts are all compiled/minified/inlined in the dist page.
+    </p>
+
+    <p>
+      To have a ready-to-use single page, you have to be carefull with links potentially broken.
+    </p>
+
+  </article>
+  <article>
+    <h3>Enjoy!</h3>
+    <ul class="build">
+      <li>Source : <a href="https://github.com/openhoat/yahs">github.com/openhoat/yahs</a></li>
+      <li>
+        Author : Olivier Penhoat
+        <ul>
+          <li>email : <a href="mailto:openhoat@gmail.com">openhoat@gmail.com</a></li>
+          <li>twitter : <a href="https://twitter.com/olivierpenhoat" target="_blank">@olivierpenhoat</a></li>
+        </ul>
+      </li>
+      <li>*(-_^)*</li>
+    </ul>
+  </article>
+</section>
+</body>
+</html>

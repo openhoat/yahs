@@ -1,0 +1,68 @@
+@beige: #c09853;
+@gray: #888;
+
+@font-face {
+  font-family: 'Merriweather';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Merriweather'), url('merriweather.woff'), format('woff');
+}
+
+.slides > article {
+  font-family: 'Merriweather', Georgia, serif;
+  &:first-child {
+    h1, h2 {
+      position: relative;
+      margin: 0;
+      padding: 20px;
+      top: 0;
+      left: 0;
+      text-align: center;
+    }
+    h1 {
+      color: @beige;
+      text-shadow: 1px 1px 6px black;
+      top: 200px;
+      font-size: 4.4em;
+    }
+    h2 {
+      color: #7d7474;
+      top: 250px;
+    }
+  }
+  h3 {
+    padding: 20px;
+    color: @beige;
+    font-weight: bold;
+    font-size: 1.8em;
+    border: solid @gray;
+    border-width: 1px 0 1px 0;
+    margin-bottom: 40px;
+  }
+  & > ul {
+    & > li {
+      list-style: none;
+      &:before {
+        content:'\2022';
+        display: block;
+        position: relative;
+        max-width: 0px;
+        max-height: 0px;
+        left: -10px;
+        top: -0px;
+        color: @beige;
+      }
+    }
+  }
+  &.slide4 {
+    .imgContainer {
+      display: block;
+      width: 100%;
+      text-align: center;
+      img {
+        width: 512px;
+        height: 512px;
+      }
+    }
+  }
+}

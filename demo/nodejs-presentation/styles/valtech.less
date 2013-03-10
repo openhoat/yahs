@@ -1,0 +1,165 @@
+@font-face {
+  font-family: 'Merriweather';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Merriweather'), url('merriweather.woff'), format('woff');
+}
+body.template-valtech {
+  background: rgb(160,169,178);
+  background: -moz-radial-gradient(center, ellipse cover,  rgba(160,169,178,1) 0%, rgba(68,81,86,1) 100%);
+  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,rgba(160,169,178,1)), color-stop(100%,rgba(68,81,86,1)));
+  background: -webkit-radial-gradient(center, ellipse cover,  rgba(160,169,178,1) 0%,rgba(68,81,86,1) 100%);
+  background: -o-radial-gradient(center, ellipse cover,  rgba(160,169,178,1) 0%,rgba(68,81,86,1) 100%);
+  background: -ms-radial-gradient(center, ellipse cover,  rgba(160,169,178,1) 0%,rgba(68,81,86,1) 100%);
+  background: radial-gradient(ellipse at center,  rgba(160,169,178,1) 0%,rgba(68,81,86,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a0a9b2', endColorstr='#445156',GradientType=1 );
+}
+.slides.template-valtech {
+  & > article {
+    &:not(.current) {
+      display: none\9;
+    }
+    font-family: 'Merriweather', Georgia, serif;
+    color: #3e3e3e;
+    background: white url('../images/logo_valtech_small.png') center 660px no-repeat;
+    background-size: 80px 16px;
+    transition: transform .3s ease-out;
+    -o-transition: -o-transform .3s ease-out;
+    -moz-transition: -moz-transform .3s ease-out;
+    -webkit-transition: -webkit-transform .3s ease-out;
+    &.first {
+      background: white url('../images/logo_valtech.png') top left no-repeat;
+      background-size: 120px 120px;
+      h1 {
+        font-family: Helvetica, Geneva, Arial, SunSans-Regular, sans-serif;
+        font-size: 46px;
+        text-align: center;
+        margin-top: 250px;
+      }
+      h2 {
+        padding: 20px;
+        color: white;
+        font-size: 30px;
+        width: 450px;
+        right: 0;
+        bottom: 80px;
+        background-color: #444;
+        text-align: center;
+        border-radius: 8px 0 0 8px;
+        box-shadow: 4px 4px 5px #888;
+      }
+      h3 {
+        font-family: 'Merriweather', Georgia, serif;
+        position: absolute;
+        padding: 10px;
+        color: white;
+        font-size: 20px;
+        width: 250px;
+        right: 0;
+        bottom: 40px;
+        background-color: #04a6df;
+        text-align: center;
+        border: none;
+        border-radius: 8px 0 0 8px;
+        box-shadow: 4px 4px 5px #888;
+      }
+      .slidenumber {
+        display: none;
+      }
+    }
+    &.chapter {
+      background: white url('../images/logo_valtech_alt.png') 786px 586px no-repeat;
+      background-size: 120px 120px;
+      padding: 0;
+      h2 {
+        display: inline-block;
+        font-family: Helvetica, Geneva, Arial, SunSans-Regular, sans-serif;
+        bottom: 480px;
+        padding: 10px 20px;
+        background-color: #444;
+        font-size: 0.9em;
+        color: white;
+        font-weight: normal;
+        letter-spacing: 0.03em;
+        .number {
+          color: #04a6df;
+        }
+      }
+      .slidenumber {
+        display: none;
+      }
+    }
+    h3 {
+      font-family: Helvetica, Geneva, Arial, SunSans-Regular, sans-serif;
+      padding-top: 14px;
+      padding-bottom: 14px;
+      border-top: solid 1px #ccc;
+      border-bottom: solid 1px #ccc;
+    }
+    ul {
+      margin-left: 0;
+      li {
+        background-position: -5px 8px;
+        background-image: url('../images/fleche-bleue.png');
+        background-repeat: no-repeat;
+        background-size: 30px 20px;
+        padding-left: 35px;
+        ul {
+          margin-top: 10px;
+          font-size: 0.8em;
+        }
+      }
+      li::before {
+        content: '';
+      }
+    }
+  }
+  .slidenumber {
+    position: absolute;
+    bottom: 10px;
+    right: 40px;
+    font-size: 0.7em;
+    color: #888;
+    font-weight: bold;
+  }
+  .left {
+    float: left;
+  }
+
+  .right {
+    float: right;
+  }
+
+  .center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  q {
+    background: white url('../images/quote_open.jpg') 0px 0px no-repeat;
+    background-size: 74px 57px;
+    margin: 0;
+    margin-top: 80px;
+    padding: 20px 70px;
+    text-align: center;
+    &::before, &::after {
+      content: '';
+    }
+  }
+  .author {
+    position: absolute;
+    background: white url('../images/quote_close.jpg') 600px -10px no-repeat;
+    background-size: 75px 60px;
+    padding-top: 140px;
+    padding-bottom: 8px;
+    width: 660px;
+    left: 100px;
+    bottom: 180px;
+    text-align: left;
+    font-size: 0.6em;
+    &::before {
+      content: '';
+    }
+    border-bottom: solid 1px #ccc;
+  }
+}
