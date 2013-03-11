@@ -17,6 +17,7 @@
 - Install [grunt](http://gruntjs.com/)
 - Install dependencies with [npm](https://npmjs.org/) :
 
+
     $ cd /root-of-yahs-project
     $ npm install
 
@@ -27,6 +28,7 @@ To browse local file in dev mode, you must disable security of your browser to a
 Alternative : browse the dist page, it does not make any request
 
 - Build the dist page with grunt :
+
 
     $ cd /root-of-yahs-project
     $ grunt
