@@ -17,8 +17,8 @@
 - Install [grunt](http://gruntjs.com/)
 - Install dependencies with [npm](https://npmjs.org/) :
 
-  $ cd /root-of-yahs-project
-  $ npm install
+    $ cd /root-of-yahs-project
+    $ npm install
 
 
 ## Usage
@@ -28,8 +28,8 @@ Alternative : browse the dist page, it does not make any request
 
 - Build the dist page with grunt :
 
-  $ cd /root-of-yahs-project
-  $ grunt
+    $ cd /root-of-yahs-project
+    $ grunt
 
 ## Compatibility
 
