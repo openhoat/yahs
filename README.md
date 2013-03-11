@@ -46,7 +46,7 @@
       </html>
 ```
 
-- Each slide is implemented with a '<article/>' tag.
+- Each slide is implemented with a &lt;article/&gt; tag.
 - To browse your page simply open it in a browser (you must disable security of your browser to allow javascript like less to make local requests).
 - Example of security disabling for Chrome :
 
