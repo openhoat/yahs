@@ -45,6 +45,9 @@
     </html>
 
 - To browse your page simply open it in a browser (you must disable security of your browser to allow javascript like less to make local requests).
+- Example of security disabling for Chrome :
+
+      $ google-chrome --disable-web-security --allow-access-from-files mypage.html
 
 Alternative : browse the dist page, it does not make any request
 
