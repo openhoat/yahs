@@ -17,34 +17,32 @@
 
 - To begin your slides, create a simple index.html page in your slide directory (/myslides for example) :
 
-<div class="special">
-    <!DOCTYPE html>
-    <html>
-    <head>
-     <meta charset="utf-8">
-     <title>My Slides</title>
-     <meta name="viewport" content="width=1100,height=750">
-     <meta name="apple-mobile-web-app-capable" content="yes">
-     <link rel="shortcut icon" href="images/favicon.ico"/>
-     <link rel="stylesheet/less" type="text/css" href="../../src/styles/yahs.less"/>
-     <!-- This is where you put your custom styles -->
-     <link rel="stylesheet/less" type="text/css" media="screen" href="styles/mystyles.less"/>
-     <!-- -->
-     <script src="../../lib/less.js"></script>
-     <script src="../../lib/prettify.js"></script>
-     <script src="../../lib/jquery.js"></script>
-     <script src="../../src/js/yahs-engine.js"></script>
-    </head>
-    <body>
-    <section class="slides">
-      <article>
-        <h3>My Slides</h3>
-        <p>Any slide content</p>
-      </article>
-    </section>
-    </body>
-    </html>
-</div>
+      <!DOCTYPE html>
+      <html>
+      <head>
+       <meta charset="utf-8">
+       <title>My Slides</title>
+       <meta name="viewport" content="width=1100,height=750">
+       <meta name="apple-mobile-web-app-capable" content="yes">
+       <link rel="shortcut icon" href="images/favicon.ico"/>
+       <link rel="stylesheet/less" type="text/css" href="../../src/styles/yahs.less"/>
+       <!-- This is where you put your custom styles -->
+       <link rel="stylesheet/less" type="text/css" media="screen" href="styles/mystyles.less"/>
+       <!-- -->
+       <script src="../../lib/less.js"></script>
+       <script src="../../lib/prettify.js"></script>
+       <script src="../../lib/jquery.js"></script>
+       <script src="../../src/js/yahs-engine.js"></script>
+      </head>
+      <body>
+      <section class="slides">
+        <article>
+          <h3>My Slides</h3>
+          <p>Any slide content</p>
+        </article>
+      </section>
+      </body>
+      </html>
 
 - To browse your page simply open it in a browser (you must disable security of your browser to allow javascript like less to make local requests).
 - Example of security disabling for Chrome :
