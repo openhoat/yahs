@@ -142,7 +142,7 @@ module.exports = function (grunt) {
           result = htmlMinifier.minify(content, {
             removeComments: true,
             useShortDoctype: true,
-            removeEmptyElements: true,
+            removeEmptyElements: false,
             collapseWhitespace: true,
             collapseBooleanAttributes: true
           });
