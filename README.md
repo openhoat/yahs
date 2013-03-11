@@ -17,6 +17,7 @@
 
 - To begin your slides, create a simple index.html page in your slide directory (/myslides for example) :
 
+<div class="special">
     <!DOCTYPE html>
     <html>
     <head>
@@ -43,6 +44,7 @@
     </section>
     </body>
     </html>
+</div>
 
 - To browse your page simply open it in a browser (you must disable security of your browser to allow javascript like less to make local requests).
 - Example of security disabling for Chrome :
