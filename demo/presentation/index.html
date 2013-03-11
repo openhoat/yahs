@@ -3,6 +3,8 @@
 <head>
   <meta charset="utf-8">
   <title>Yet Another Html5 Slideshow</title>
+  <meta http-equiv="pragma" content="no-cache">
+  <meta http-equiv="expires" content="-1">
   <meta name="viewport" content="width=1100,height=750">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <link rel="shortcut icon" href="images/favicon.ico"/>
@@ -51,34 +53,34 @@
   </article>
   <article>
     <h3>Syntax highlighting</h3>
-    <pre>
-step1(params, function (result) {
-  var n = 0
-    , next = function () {
-    n++;
-    if (n === 3) {
-      done();
-    }
-  };
-  step2(result, next);
-  step3(result, next);
-  step4(result, next);
-});
-    </pre>
+      <pre>
+  step1(params, function (result) {
+    var n = 0
+      , next = function () {
+      n++;
+      if (n === 3) {
+        done();
+      }
+    };
+    step2(result, next);
+    step3(result, next);
+    step4(result, next);
+  });
+      </pre>
   </article>
   <article>
     <h3>Css example</h3>
-    <pre class="lang-css">
+      <pre class="lang-css">
 
-body {
-  font-family: Georgia, "Times New Roman", Times, serif;
-  color: purple;
-  background-color: #d8da3d;
-}
-h1 {
-  font-family: Helvetica, Geneva, Arial, SunSans-Regular, sans-serif;
-}
-    </pre>
+  body {
+    font-family: Georgia, "Times New Roman", Times, serif;
+    color: purple;
+    background-color: #d8da3d;
+  }
+  h1 {
+    font-family: Helvetica, Geneva, Arial, SunSans-Regular, sans-serif;
+  }
+      </pre>
   </article>
   <article>
     <h3>'build' class</h3>
@@ -99,9 +101,9 @@ h1 {
           <li>Install <a href="http://gruntjs.com/" target="_blank">grunt</a></li>
           <li>
             Install dependencies with <a href="https://npmjs.org/" target="_blank">npm</a> :
-            <pre class="lang-bsh">
-> cd /workdir/yahs
-> npm install</pre>
+              <pre class="lang-bsh">
+  > cd /workdir/yahs
+  > npm install</pre>
           </li>
         </ul>
       </li>
@@ -112,8 +114,8 @@ h1 {
         </ul>
       </li>
       <li>Build the dist page with grunt :
-            <pre class="lang-bsh">
-> grunt</pre>
+              <pre class="lang-bsh">
+  > grunt</pre>
       </li>
       <li>Browse the all-in-one dist page</li>
     </ul>

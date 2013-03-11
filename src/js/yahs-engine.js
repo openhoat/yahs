@@ -1,336 +1,299 @@
-var baseDir = '../'
-  , slideClasses = ['far-past', 'past', 'current', 'next', 'far-next']
-  , slideEls
-  , curSlide
-  , touchDX
-  , touchDY
-  , touchStartX
-  , touchStartY;
+function SlideShow() {
+  var slideClasses = ['far-past', 'past', 'current', 'next', 'far-next']
+    , slideIndex = 0
+    , slides = null;
 
-function getCurSlideFromHash() {
-  var slideNo = parseInt(location.hash.substr(1));
-  if (slideNo) {
-    curSlide = slideNo - 1;
-  } else {
-    curSlide = 0;
+  function getSlide(index) {
+    return index >= 0 && index < slides.length ? slides[index] : null;
   }
-}
 
-function getSlideEl(no) {
-  if ((no < 0) || (no >= slideEls.length)) {
-    return null;
-  } else {
-    return slideEls[no];
+  function addSlideNumbers() {
+    var slideNumberContainer;
+    $.each(slides, function (index, item) {
+      $(item).addClass('slide' + (index + 1));
+      slideNumberContainer = $(item).find('div.slidenumber');
+      if (slideNumberContainer.length > 0) {
+        $(slideNumberContainer).text(index + 1);
+      }
+    });
   }
-}
 
-function updateSlideClass(slideNo, className) {
-  var el = getSlideEl(slideNo);
-  if (!el) {
-    return;
-  }
-  if (className) {
-    el.classList.add(className);
-  }
-  for (var i in slideClasses) {
-    if (className != slideClasses[i]) {
-      el.classList.remove(slideClasses[i]);
+  function resetIndexFromHash() {
+    var index = parseInt(location.hash.substr(1));
+    if (index) {
+      slideIndex = index - 1;
+    } else {
+      slideIndex = 0;
     }
   }
-}
 
-function triggerEnterEvent(no) {
-  var el = getSlideEl(no);
-  if (!el) {
-    return;
-  }
-  var onEnter = el.getAttribute('onslideenter');
-  if (onEnter) {
-    new Function(onEnter).call(el);
-  }
-  var evt = document.createEvent('Event');
-  evt.initEvent('slideenter', true, true);
-  evt.slideNumber = no + 1; // Make it readable
-  el.dispatchEvent(evt);
-}
-
-function triggerLeaveEvent(no) {
-  var el = getSlideEl(no);
-  if (!el) {
-    return;
-  }
-  var onLeave = el.getAttribute('onslideleave');
-  if (onLeave) {
-    new Function(onLeave).call(el);
-  }
-  var evt = document.createEvent('Event');
-  evt.initEvent('slideleave', true, true);
-  evt.slideNumber = no + 1; // Make it readable
-  el.dispatchEvent(evt);
-}
-
-function disableSlideFrames(no) {
-  var el = getSlideEl(no);
-  if (!el) {
-    return;
-  }
-  var frames = el.getElementsByTagName('iframe');
-  for (var i = 0, frame; frame = frames[i]; i++) {
-    disableFrame(frame);
-  }
-}
-
-function enableSlideFrames(no) {
-  var el = getSlideEl(no);
-  if (!el) {
-    return;
-  }
-  var frames = el.getElementsByTagName('iframe');
-  for (var i = 0, frame; frame = frames[i]; i++) {
-    enableFrame(frame);
-  }
-}
-
-function disableFrame(frame) {
-  frame.src = 'about:blank';
-}
-
-function enableFrame(frame) {
-  var src = frame._src;
-  if (frame.src != src && src != 'about:blank') {
-    frame.src = src;
-  }
-}
-
-function setupFrames() {
-  var frames = document.querySelectorAll('iframe');
-  for (var i = 0, frame; frame = frames[i]; i++) {
-    frame._src = frame.src;
-    disableFrame(frame);
-  }
-  enableSlideFrames(curSlide);
-  enableSlideFrames(curSlide + 1);
-  enableSlideFrames(curSlide + 2);
-}
-
-function updateSlides() {
-  for (var i = 0; i < slideEls.length; i++) {
-    switch (i) {
-      case curSlide - 2:
-        updateSlideClass(i, 'far-past');
-        break;
-      case curSlide - 1:
-        updateSlideClass(i, 'past');
-        break;
-      case curSlide:
-        updateSlideClass(i, 'current');
-        break;
-      case curSlide + 1:
-        updateSlideClass(i, 'next');
-        break;
-      case curSlide + 2:
-        updateSlideClass(i, 'far-next');
-        break;
-      default:
-        updateSlideClass(i);
-        break;
+  function setFrame(frame, enable) {
+    if (enable) {
+      if (frame.src != frame._src && frame._src != 'about:blank') {
+        frame.src = frame._src;
+      }
+    } else {
+      frame.src = 'about:blank';
     }
   }
-  triggerLeaveEvent(curSlide - 1);
-  triggerEnterEvent(curSlide);
-  window.setTimeout(function () {
-    // Hide after the slide
-    disableSlideFrames(curSlide - 2);
-  }, 301);
-  enableSlideFrames(curSlide - 1);
-  enableSlideFrames(curSlide + 2);
-  updateHash();
-}
 
-function buildNextSlide() {
-  var toBuild = slideEls[curSlide].querySelectorAll('.to-build');
-  if (!toBuild.length) {
-    return false;
+  function setSlideFrames(index, enable) {
+    var slide = getSlide(index);
+    if (!slide) {
+      return;
+    }
+    var frames = $(slide).find('iframe');
+    for (var i = 0, frame; frame = frames[i]; i++) {
+      setFrame(frame, enable);
+    }
   }
-  toBuild[0].classList.remove('to-build');
-  return true;
-}
 
-function firstSlide() {
-  curSlide = 0;
-  updateSlides();
-}
+  function initFrames() {
+    var frames = $('iframe');
+    for (var i = 0, frame; frame = frames[i]; i++) {
+      frame._src = frame.src;
+      setFrame(frame, false);
+    }
+    setSlideFrames(slideIndex, true);
+    setSlideFrames(slideIndex + 1, true);
+    setSlideFrames(slideIndex + 2, true);
+  }
 
-function lastSlide() {
-  curSlide = slideEls.length - 1;
-  updateSlides();
-}
+  function addPrettify() {
+    var hasPrettyPrint = false;
+    $.each($('pre'), function () {
+      if (!$(this).hasClass('noprettyprint')) {
+        $(this).addClass('prettyprint');
+        hasPrettyPrint = true;
+      }
+    });
+  }
 
-function prevSlide() {
-  if (curSlide > 0) {
-    curSlide--;
+  function firstSlide() {
+    slideIndex = 0;
     updateSlides();
   }
-}
 
-function nextSlide() {
-  if (buildNextSlide()) {
-    return;
-  }
-  if (curSlide < slideEls.length - 1) {
-    curSlide++;
+  function lastSlide() {
+    slideIndex = slides.length - 1;
     updateSlides();
   }
-}
 
-function handleBodyKeyDown(event) {
-  switch (event.keyCode) {
-    case 36: // home
-      firstSlide();
-      event.preventDefault();
-      break;
-    case 35: // end
-      lastSlide();
-      event.preventDefault();
-      break;
-    case 39: // right arrow
-    case 13: // Enter
-    case 32: // space
-    case 34: // PgDn
-      nextSlide();
-      event.preventDefault();
-      break;
-    case 37: // left arrow
-    case 8: // Backspace
-    case 33: // PgUp
-      prevSlide();
-      event.preventDefault();
-      break;
-    case 40: // down arrow
-      nextSlide();
-      event.preventDefault();
-      break;
-    case 38: // up arrow
-      prevSlide();
-      event.preventDefault();
-      break;
-  }
-}
-
-function addPrettify() {
-  var hasPrettyPrint = false;
-  $.each($('pre'), function () {
-    if (!$(this).hasClass('noprettyprint')) {
-      $(this).addClass('prettyprint');
-      hasPrettyPrint = true;
+  function prevSlide() {
+    if (slideIndex > 0) {
+      slideIndex--;
+      updateSlides();
     }
-  });
-  /*
-   if (hasPrettyPrint) {
-   $.getScript(baseDir + 'lib/prettify.js', function () {
-   prettyPrint();
-   });
-   }
-   */
-}
+  }
 
-function makeBuildLists() {
-  for (var i = curSlide, slide; slide = slideEls[i]; i++) {
-    var items = slide.querySelectorAll('.build > *');
-    for (var j = 0, item; item = items[j]; j++) {
-      if (item.classList) {
-        item.classList.add('to-build');
+  function buildNextSlide() {
+    var toBuild = $(slides[slideIndex]).find('.to-build');
+    if (!toBuild.length) {
+      return false;
+    }
+    $(toBuild[0]).removeClass('to-build');
+    return true;
+  }
+
+  function nextSlide() {
+    if (buildNextSlide()) {
+      return;
+    }
+    if (slideIndex < slides.length - 1) {
+      slideIndex++;
+      updateSlides();
+    }
+  }
+
+  function handleBodyKeyDown(event) {
+    switch (event.keyCode) {
+      case 36: // home
+        firstSlide();
+        event.preventDefault();
+        break;
+      case 35: // end
+        lastSlide();
+        event.preventDefault();
+        break;
+      case 39: // right arrow
+      case 13: // Enter
+      case 32: // space
+      case 34: // PgDn
+        nextSlide();
+        event.preventDefault();
+        break;
+      case 37: // left arrow
+      case 8: // Backspace
+      case 33: // PgUp
+        prevSlide();
+        event.preventDefault();
+        break;
+      case 40: // down arrow
+        nextSlide();
+        event.preventDefault();
+        break;
+      case 38: // up arrow
+        prevSlide();
+        event.preventDefault();
+        break;
+    }
+  }
+
+  function addEventListeners() {
+    $(document).bind('keydown', handleBodyKeyDown);
+  }
+
+  function triggerSlideEvent(index, enter) {
+    var slide = getSlide(index)
+      , onEvent
+      , evt;
+    if (!slide) {
+      return;
+    }
+    onEvent = slide.getAttribute(enter ? 'onslideenter' : 'onslideleave');
+    if (onEvent) {
+      new Function(onEvent).call(slide);
+    }
+    evt = document.createEvent('Event');
+    evt.initEvent(enter ? 'slideenter' : 'slideleave', true, true);
+    evt.slideNumber = index + 1;
+    slide.dispatchEvent(evt);
+  }
+
+  function updateHash() {
+    location.replace('#' + (slideIndex + 1));
+  }
+
+  function updateSlideClass(index, className) {
+    var slide = getSlide(index)
+      , i;
+    if (!slide) {
+      return;
+    }
+    if (className) {
+      $(slide).addClass(className);
+    }
+    for (i = 0; i < slideClasses.length; i++) {
+      if (className != slideClasses[i]) {
+        $(slide).removeClass(slideClasses[i]);
       }
     }
   }
-}
 
-function addEventListeners() {
-  document.addEventListener('keydown', handleBodyKeyDown, false);
-}
-
-function handleTouchStart(event) {
-  if (event.touches.length == 1) {
-    touchDX = 0;
-    touchDY = 0;
-    touchStartX = event.touches[0].pageX;
-    touchStartY = event.touches[0].pageY;
-    document.body.addEventListener('touchmove', handleTouchMove, true);
-    document.body.addEventListener('touchend', handleTouchEnd, true);
+  function updateSlides() {
+    for (var i = 0; i < slides.length; i++) {
+      switch (i) {
+        case slideIndex - 2:
+          updateSlideClass(i, 'far-past');
+          break;
+        case slideIndex - 1:
+          updateSlideClass(i, 'past');
+          break;
+        case slideIndex:
+          updateSlideClass(i, 'current');
+          break;
+        case slideIndex + 1:
+          updateSlideClass(i, 'next');
+          break;
+        case slideIndex + 2:
+          updateSlideClass(i, 'far-next');
+          break;
+        default:
+          updateSlideClass(i);
+          break;
+      }
+    }
+    triggerSlideEvent(slideIndex - 1, false);
+    triggerSlideEvent(slideIndex, true);
+    window.setTimeout(function () {
+      setSlideFrames(slideIndex - 2, false);
+    }, 301);
+    setSlideFrames(slideIndex - 1, true);
+    setSlideFrames(slideIndex + 2, true);
+    updateHash();
   }
-}
 
-function handleTouchMove(event) {
-  if (event.touches.length > 1) {
-    cancelTouch();
-  } else {
-    touchDX = event.touches[0].pageX - touchStartX;
-    touchDY = event.touches[0].pageY - touchStartY;
+  function handleTouchStart(event) {
+    if (event.touches.length == 1) {
+      touchDX = 0;
+      touchDY = 0;
+      touchStartX = event.touches[0].pageX;
+      touchStartY = event.touches[0].pageY;
+      $(document.body).bind('touchmove', handleTouchMove);
+      $(document.body).bind('touchend', handleTouchEnd);
+    }
   }
-}
 
-function handleTouchEnd(event) {
-  var dx = Math.abs(touchDX);
-  var dy = Math.abs(touchDY);
-  if ((dx > PM_TOUCH_SENSITIVITY) && (dy < (dx * 2 / 3))) {
-    if (touchDX > 0) {
-      prevSlide();
+  function handleTouchMove(event) {
+    if (event.touches.length > 1) {
+      cancelTouch();
     } else {
-      nextSlide();
+      touchDX = event.touches[0].pageX - touchStartX;
+      touchDY = event.touches[0].pageY - touchStartY;
     }
+    return false;
   }
-  cancelTouch();
-}
 
-function cancelTouch() {
-  document.body.removeEventListener('touchmove', handleTouchMove, true);
-  document.body.removeEventListener('touchend', handleTouchEnd, true);
-}
-
-function setupInteraction() {
-  var el = document.createElement('div');
-  el.className = 'slide-area';
-  el.id = 'prev-slide-area';
-  el.addEventListener('click', prevSlide, false);
-  document.querySelector('section.slides').appendChild(el);
-  el = document.createElement('div');
-  el.className = 'slide-area';
-  el.id = 'next-slide-area';
-  el.addEventListener('click', nextSlide, false);
-  document.querySelector('section.slides').appendChild(el);
-  document.body.addEventListener('touchstart', handleTouchStart, false);
-}
-
-function updateHash() {
-  location.replace('#' + (curSlide + 1));
-}
-
-function addSlideNumbers() {
-  var slideNumberContainer;
-  $.each(slideEls, function (index, item) {
-    $(item).addClass('slide' + (index + 1));
-    slideNumberContainer = $(item).find('div.slidenumber');
-    if (slideNumberContainer.length > 0) {
-      $(slideNumberContainer).html(index + 1);
+  function handleTouchEnd(event) {
+    var dx = Math.abs(touchDX);
+    var dy = Math.abs(touchDY);
+    if ((dx > PM_TOUCH_SENSITIVITY) && (dy < (dx * 2 / 3))) {
+      if (touchDX > 0) {
+        prevSlide();
+      } else {
+        nextSlide();
+      }
     }
-  });
-}
+    cancelTouch();
+    return false;
+  }
 
-function initialize() {
-  console.log('initialize');
-  getCurSlideFromHash();
-  slideEls = $('section.slides > article');
-  addSlideNumbers();
-  setupFrames();
-  addPrettify();
-  addEventListeners();
-  updateSlides();
-  setupInteraction();
-  makeBuildLists();
-  prettyPrint();
-  $('body').addClass('loaded');
+  function setupInteraction() {
+    var slideArea = $('<div/>', {
+      id: 'prev-slide-area',
+      'class': 'slide-area'
+    });
+    slideArea.click(prevSlide);
+    $('section.slides').append(slideArea);
+    slideArea = $('<div/>', {
+      id: 'next-slide-area',
+      'class': 'slide-area'
+    });
+    slideArea.click(nextSlide);
+    $('section.slides').append(slideArea);
+    $(document.body).bind('touchstart', handleTouchStart);
+  }
+
+  function makeBuildLists() {
+    slides.find('.build > *').addClass('to-build');
+  }
+
+  function init() {
+    slides = $('section.slides > article');
+    addSlideNumbers();
+    resetIndexFromHash();
+    initFrames();
+    addPrettify();
+    addEventListeners();
+    updateSlides();
+    setupInteraction();
+    makeBuildLists();
+    prettyPrint();
+  }
+
+  function start() {
+    $('body').addClass('loaded');
+  }
+
+  return {
+    init: init,
+    start: start
+  };
 }
 
 $(function () {
-  initialize();
+//  initialize();
+  var slideShow = SlideShow();
+  slideShow.init();
+  slideShow.start();
 });
